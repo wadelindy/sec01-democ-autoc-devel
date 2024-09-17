@@ -1,8 +1,10 @@
 ---
 title: "Democracies, autocracies and development"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 date: "`r Sys.Date()`"
-urlcolor: 'blue'
+urlcolor: blue
 ---
 
 <style type="text/css">
@@ -43,7 +45,9 @@ Before we can get started working with data, we first need to load the data into
 in many file types, but the most common is a CSV, which stands for “comma-separated values”. Use the
 `read.csv()` function from the R package `readr` to read your data into R and call it `anrr`. You'll find the dataset under the folder `data`. This is the original data used in their study.
 
+```{r}
 
+```
 
 
 ## Question 2: Inspecting the dataset I
@@ -57,10 +61,13 @@ Use the `head()` function to view the first several rows of the data. What can y
 
 Use the function `glimpse()` to look at a summary of the dataset. What can you notice about the variable `dem`?
 
+```{r}
+library(readr)
 
+anrr <- read_csv("data/section1_df.csv")
 
-
-
+glimpse(anrr)
+```
 
 ## Question 4: Measuring democracy
 
@@ -68,7 +75,10 @@ There are many potential ways to code if a country is democratic or not. Researc
 
 Use the function `table` to see how many observations are democracies and how many autocracies in the data. (Hint: to tabulate the values of a variable, pass as arguments to `table` something of the form `dataframe$variable`). 
 
+```{r}
+table(anrr$dem, useNA = "always")
 
+```
 
 
 
@@ -76,7 +86,7 @@ Use the function `table` to see how many observations are democracies and how ma
 
 Now add as an argument to the function `table` the option `useNA = "always"`. How many missing values does the variable `dem` has?
 
-
+651
 
 
 ## Question 6
